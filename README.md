@@ -1,28 +1,31 @@
 # Heather McDonald — independent website redesign concept
 
-An **unofficial, independently prepared** interactive homepage concept by Alison (September 2026). This demonstration has not been commissioned, approved, or endorsed by Heather McDonald or her team.
+An **unofficial, independently prepared** interactive redesign concept by Alison (September 2026). Not commissioned, approved or endorsed by Heather McDonald or her team.
 
-## Explore the concept
+## Explore the designs
 
-Once GitHub Pages is enabled for this repository, the site will be available at:
+If GitHub Pages is enabled for the `main` branch, root folder:
 
-https://alisoneleece-source.github.io/Heather-McDonald/
+- **Desktop concept:** https://alisoneleece-source.github.io/Heather-McDonald/?desktop=1
+- **Dedicated mobile design:** https://alisoneleece-source.github.io/Heather-McDonald/mobile.html
+- **Interactive phone-frame preview for desktop viewers:** https://alisoneleece-source.github.io/Heather-McDonald/preview.html
 
-The `index.html` file is a standalone, responsive static webpage. The demo shows an updated homepage, podcast and live-show paths, a prominent Patreon membership journey, and expandable design rationale. External links lead to Heather's official website or the Juicy Scoop Patreon membership page. The concept does not collect information or accept payments.
+The homepage automatically opens the separately designed mobile page on narrow screens. Use `?desktop=1` to examine the desktop design even on a phone. The preview page contains a scrollable, clickable phone-sized iframe.
 
-## Publish with GitHub Pages
+## What the concept demonstrates
 
-1. Open **Settings → Pages** in this repository.
-2. Under **Build and deployment**, select **Deploy from a branch**.
-3. Choose branch **main**, folder **/(root)**, then **Save**.
-4. Once Pages reports that the site is published, open the URL above and test it on desktop and mobile.
+- A portrait-led desktop homepage in place of the earlier illustrative Juicy Scoop cover.
+- A **different mobile layout** with a portrait-first introduction, quick podcast/tour shortcuts and a persistent Patreon action.
+- Direct links to Heather’s real Patreon membership selection page. Payments and sign-ups happen on Patreon, **not** in this demo.
+- Podcast and tour routes that link to her official website without invented episode data, event listings, membership benefits or prices.
+- Expandable notes explaining design decisions.
 
-If Pages has already been configured, these steps may not be necessary. Publishing status and public accessibility must be verified before sharing the demo with Heather's team.
+## Publication and quality limitations
 
-## Scope and limitations
+GitHub accepting files does not establish that GitHub Pages has deployed. To publish: repository **Settings → Pages → Deploy from a branch → main → /(root) → Save**. Refresh the Pages settings screen and confirm the live URL. Test desktop, mobile, image load, navigation and external links before sharing with Heather’s team.
 
-- Independent illustrative design, not Heather's actual brand assets or a production replacement.
-- Membership prices, benefits, show dates, episodes and other changing information are intentionally not copied into the demo.
-- Production work would require content approval, access to current publishing systems, analytics, responsive/browser testing, and a full accessibility assessment.
-- Original official website: https://heathermcdonald.net/
-- Official Patreon membership page: https://www.patreon.com/juicyscoop/membership
+The photo is taken from a publicly displayed Heather McDonald promotional image and is included **only as a provisional visual reference**. Its reuse rights and Heather’s/team’s approval have **not** been confirmed. Replace it with an approved, locally hosted portrait before presenting the concept externally or using it in production. External image hosting can also change or block access; a text fallback is included. No official brand affiliation is implied.
+
+The demo is not a full production site. Analytics, approved images and copy, content feeds, content management integration, comprehensive browser/device/accessibility checks and business requirements would need to be confirmed before implementation.
+
+Official destinations: [Heather McDonald’s website](https://heathermcdonald.net/) · [Juicy Scoop Patreon membership](https://www.patreon.com/join/juicyscoop)
