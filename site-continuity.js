@@ -16,6 +16,8 @@
     .contact-grid .contact-area .email{display:block;max-width:100%;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;letter-spacing:normal!important;font-size:clamp(13px,1.5vw,16px)!important;line-height:1.55}
     .sticker.site-greeting{font:italic 700 17px/1.06 Georgia,serif;letter-spacing:-.025em;padding:12px}
     @media(max-width:700px){
+      html{scroll-padding-top:135px}
+      header.unified-mobile-header{position:sticky!important;top:0!important;z-index:1000!important}
       .site-loop,.social{padding:53px 17px}
       .site-loop h2,.social h2{font-size:clamp(35px,9vw,46px)}
       .site-loop .social-grid a,.social .social-grid a{width:57px;height:57px;border:1px solid #25192566;border-radius:50%;background:transparent}
@@ -39,6 +41,10 @@
       return;
     }
     if (!['podcast.html', 'tour.html', 'shop.html', 'contact.html'].includes(page)) return;
+    if (page === 'podcast.html') {
+      const stripe = document.querySelector('.stripe');
+      if (stripe) stripe.remove();
+    }
     if (page === 'contact.html') {
       const email = document.querySelector('.contact-area .email');
       if (email && email.textContent.trim() === 'heathermcdonaldmanagement@gmail.com') {
