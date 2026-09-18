@@ -29,3 +29,7 @@ shell.innerHTML=`<div class="unified-mobile-social" aria-label="Heather's social
 header.appendChild(shell);const button=shell.querySelector('.unified-mobile-toggle'),panel=shell.querySelector('.unified-mobile-panel');function setOpen(open){panel.hidden=!open;button.setAttribute('aria-expanded',String(open));button.textContent=open?'Close ×':'Menu ☰'}button.addEventListener('click',()=>setOpen(panel.hidden));panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){setOpen(false);button.focus()}});document.addEventListener('click',e=>{if(!panel.hidden&&!shell.contains(e.target))setOpen(false)});const current=location.pathname.split('/').pop()||'index.html';panel.querySelectorAll('a').forEach(a=>{if(a.getAttribute('href')===current)a.setAttribute('aria-current','page')});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
+/* Keep non-home social links, contact layout and the desktop greeting in sync. */
+const siteContinuityScript=document.createElement('script');
+siteContinuityScript.src='site-continuity.js';
+document.head.appendChild(siteContinuityScript);
