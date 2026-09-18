@@ -6,9 +6,9 @@
     .site-loop h2,.social h2{font:700 clamp(37px,5vw,58px)/1 Georgia,serif;letter-spacing:-.05em;margin:9px 0 25px}
     .site-loop h2 em,.social h2 em{font-weight:400;color:#df337a}
     .site-loop .social-grid,.social .social-grid{display:flex;justify-content:center;align-items:center;gap:17px;flex-wrap:wrap}
-    .site-loop .social-grid a,.social .social-grid a{display:grid;place-items:center;width:65px;height:65px;border:1px solid #25192566;border-radius:50%;background:transparent;color:#251925;text-decoration:none;transition:transform .15s}
+    .site-loop .social-grid a,.social .social-grid a{display:grid;place-items:center;width:83px;height:83px;border:1px solid #e9d4dd;border-radius:12px;background:white;color:#251925;text-decoration:none;transition:transform .15s}
     .site-loop .social-grid a:hover,.social .social-grid a:hover{transform:translateY(-3px)}
-    .site-loop .social-grid svg,.social .social-grid svg{display:block;width:29px;height:29px}
+    .site-loop .social-grid svg,.social .social-grid svg{display:block;width:45px;height:45px}
     .contact-grid .contact-area:first-child{text-align:center}
     .contact-grid .contact-area:first-child .logo-space{justify-content:center}
     .contact-grid .contact-area:first-child .rep-name,.contact-grid .contact-area:first-child .phone{font-size:17px;line-height:1.5;text-align:center}
@@ -18,7 +18,7 @@
     @media(max-width:700px){
       .site-loop,.social{padding:53px 17px}
       .site-loop h2,.social h2{font-size:clamp(35px,9vw,46px)}
-      .site-loop .social-grid a,.social .social-grid a{width:57px;height:57px}
+      .site-loop .social-grid a,.social .social-grid a{width:57px;height:57px;border:1px solid #25192566;border-radius:50%;background:transparent}
       .site-loop .social-grid svg,.social .social-grid svg{width:26px;height:26px}
       .contact-grid .contact-area .email{font-size:clamp(12px,3.7vw,15px)!important}
       .sticker.site-greeting{font-size:14px}
