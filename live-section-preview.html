@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#251925">
+<title>Live section concept | Heather McDonald independent redesign</title>
+<style>
+:root{--ink:#251925;--pink:#df337a;--berry:#a91a54;--muted:#61505c}
+*{box-sizing:border-box}
+body{margin:0;background:#fff8f2;color:var(--ink);font:16px/1.6 Arial,Helvetica,sans-serif}
+a{color:inherit}a:focus-visible{outline:3px solid #005fcc;outline-offset:4px}
+.preview-bar{background:var(--ink);color:white;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:12px;font-weight:800;letter-spacing:.04em}
+.preview-bar a{text-underline-offset:4px;white-space:nowrap}
+.live-section{background:#fff0f5;padding:77px 0 86px;overflow:hidden}
+.live-wrap{width:min(1280px,calc(100% - 52px));margin:auto}
+.live-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,.99fr) minmax(0,1.12fr);gap:35px;align-items:center}
+.live-photo{margin:0;display:flex;align-items:center;justify-content:center;min-width:0;min-height:260px}
+.live-photo img{display:block;width:100%;height:auto;max-height:420px;object-fit:contain}
+.eyebrow{color:var(--berry);font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:900}
+h2,h3,p{margin-top:0}
+.live-copy h2{font:700 clamp(43px,4.5vw,65px)/1.01 Georgia,'Times New Roman',serif;letter-spacing:-.065em;margin:16px 0 24px}
+.live-copy h2 em{font-weight:400;color:var(--pink)}
+.live-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:350px}
+.live-card{background:white;border:1px solid #edcbd9;border-radius:9px;padding:31px;box-shadow:12px 12px 0 #df337a24;min-width:0}
+.live-card strong{display:block;font:700 64px/.95 Georgia,'Times New Roman',serif;color:var(--pink)}
+.live-card h3{font:700 clamp(26px,2.5vw,32px)/1.08 Georgia,'Times New Roman',serif;margin:14px 0}
+.live-card p{font-size:13px;color:var(--muted)}
+.live-card a{font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid currentColor;display:inline-block;margin-top:6px}
+@media(max-width:1050px){.live-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:32px}.live-photo{grid-row:span 2}.live-card{grid-column:2}.live-section{padding:56px 0}}
+@media(max-width:700px){.preview-bar{flex-wrap:wrap}.live-wrap{width:calc(100% - 34px)}.live-grid{grid-template-columns:1fr;gap:27px}.live-photo{grid-row:auto;min-height:0;max-width:360px;margin:auto}.live-photo img{max-height:360px}.live-card{grid-column:auto}.live-copy h2{font-size:clamp(49px,10vw,65px)}}
+</style>
+</head>
+<body>
+<div class="preview-bar"><span>INDEPENDENT REDESIGN · LIVE SECTION EXPERIMENT</span><a href="index.html?desktop=1#shows">← Original homepage section</a></div>
+<main>
+<section class="live-section" aria-labelledby="shows-preview-title"><div class="live-wrap live-grid">
+<figure class="live-photo"><img src="Live%20dates%20section.png" alt="Heather McDonald promotional image for her live shows"></figure>
+<div class="live-copy"><div class="eyebrow">See her live</div><h2 id="shows-preview-title">Not everything<br>makes it<br><em>offstage.</em></h2><p>Find current performance information and tickets on Heather’s official site.</p></div>
+<div class="live-card"><div class="eyebrow">Your next night out</div><strong>LIVE!</strong><h3>Find Heather in a city near you.</h3><p>The tour page groups her published stops, with links to current ticket information.</p><a href="tour.html">Browse performances ↗</a></div>
+</div></section>
+</main>
+</body>
+</html>
