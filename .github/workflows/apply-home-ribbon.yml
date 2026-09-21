@@ -1,0 +1,32 @@
+name: Apply approved desktop ribbon loader
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-home-ribbon.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load existing shared styling on desktop home
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          original = p.read_text(encoding='utf-8')
+          script = '<script src="site-continuity.js" defer></script>'
+          if script not in original:
+              assert original.count('</head>') == 1, 'Expected exactly one head closing tag; page left unchanged'
+              p.write_text(original.replace('</head>', script + '\n</head>', 1), encoding='utf-8')
+          PY
+      - name: Commit only the one-line loader if needed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'Load shared desktop greeting ribbon and scoop styles'
+            git push
+          fi
