@@ -1,0 +1,41 @@
+name: Verify revised website files
+on:
+  push:
+    paths:
+      - '.github/workflows/visual-check.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript and required assets
+        run: |
+          node --check site-continuity.js
+          node --check mobile-navigation.js
+          python3 - <<'PY'
+          from pathlib import Path
+          assert '<script src="site-continuity.js" defer></script>' in Path('index.html').read_text()
+          assert 'assets/podcast-portrait-supplied.svg' in Path('site-continuity.js').read_text()
+          assert 'assets/scoop-exact-darkpink.svg' in Path('site-continuity.js').read_text()
+          assert Path('assets/podcast-portrait-supplied.svg').exists()
+          assert Path('assets/scoop-exact-darkpink.svg').exists()
+          print('PASS: script syntax and supplied asset references')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: heather-revised-review-files
+          path: |
+            index.html
+            contact.html
+            podcast.html
+            mobile.html
+            tour.html
+            shop.html
+            site-continuity.js
+            mobile-navigation.js
+            assets/
+            Get in touch page.png
+            WME Logo.png
+          retention-days: 1
