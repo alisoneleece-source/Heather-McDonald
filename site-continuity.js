@@ -25,6 +25,8 @@
     .choice a.symbol-link{display:grid!important;place-items:center!important;width:55px!important;height:55px!important;min-width:55px!important;min-height:55px!important;background:var(--ink,#251925)!important;color:white!important;border:0!important;border-radius:50%!important;margin:0!important;padding:0!important;font-size:25px!important;font-weight:400!important;line-height:1!important;text-decoration:none!important;align-self:start!important;flex:none!important}
     .choice a.symbol-link:hover{background:var(--berry,#a91a54)!important}
     .choice a.symbol-link:focus-visible{outline:3px solid #005fcc;outline-offset:4px}
+    /* Only the three desktop Pick your scoop cards: less empty vertical space. */
+    @media(min-width:701px){.path .choices .choice{min-height:305px!important;padding:22px 26px!important}.path .choices .choice p{flex:0 0 auto!important}}
     /* Contact: the supplied desktop reference is photo LEFT, heading RIGHT. */
     body.site-contact .hero{padding:54px 0 0!important}
     body.site-contact .hero-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;align-items:end!important;gap:clamp(14px,3vw,50px)!important}
@@ -36,7 +38,7 @@
     body.site-contact .content{padding:65px 0 80px!important}
     body.site-contact .contact-grid{grid-template-columns:1fr 1fr!important;gap:36px!important}
     /* Podcast: use the actual supplied image instead of the invented graphic. */
-    body.site-podcast .hero .art{width:100%!important;max-width:530px!important;aspect-ratio:1!important;overflow:hidden!important;display:grid!important;place-items:center!important;background:#fff!important;border:11px solid white!important;border-radius:50%!important;transform:none!important;box-shadow:14px 16px 0 #df337a24!important}
+    body.site-podcast .hero .art{width:100%!max-width:530px!important;aspect-ratio:1!important;overflow:hidden!important;display:grid!important;place-items:center!important;background:#fff!important;border:11px solid white!important;border-radius:50%!important;transform:none!important;box-shadow:14px 16px 0 #df337a24!important}
     body.site-podcast .hero .art img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;max-width:none!important;border:0!important;transform:none!important}
     @media(max-width:850px){body.site-podcast .hero .art{display:grid!important;width:min(88%,370px)!important;margin:0 auto!important}}
     @media(max-width:700px){
@@ -128,8 +130,7 @@
     section.className = 'site-loop'; section.setAttribute('aria-labelledby', 'site-loop-title');
     section.innerHTML = `<div class="site-loop-inner"><h2 id="site-loop-title">Stay in the <em>loop.</em></h2><div class="social-grid">
       <a href="https://www.patreon.com/join/juicyscoop" target="_blank" rel="noopener noreferrer" aria-label="Heather McDonald on Patreon" title="Patreon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="12" width="7" height="28" rx="1" fill="currentColor"/><circle cx="30" cy="22" r="13" fill="currentColor"/></svg></a>
-      <a href="https://www.youtube.com/@JuicyScoop" target="_blank" rel="noopener noreferrer" aria-label="Juicy Scoop on YouTube" title="YouTube"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="11" width="42" height="26" rx="9" fill="#e62117"/><path d="M20 17 L32 24 L20 31 Z" fill="white"/></svg></a>
-      <a href="https://www.instagram.com/heathermcdonald/" target="_blank" rel="noopener noreferrer" aria-label="Heather McDonald on Instagram" title="Instagram"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="7" width="34" height="34" rx="10" fill="none" stroke="currentColor" stroke-width="3.4"/><circle cx="24" cy="24" r="8" fill="none" stroke="currentColor" stroke-width="3.4"/><path d="M34 14.5"/></svg></a>
+      <a href="https://www.youtube.com/@JuicyScoop" target="_blank" rel="noopener noreferrer" aria-label="Juicy Scoop on YouTube" title="YouTube"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="7" width="34" height="34" rx="10" fill="none" stroke="currentColor" stroke-width="3.4"/><circle cx="24" cy="24" r="8" fill="none" stroke="currentColor" stroke-width="3.4"/><path d="M34 14.5"/></svg></a>
     </div></div>`;
     main.appendChild(section);
   }
