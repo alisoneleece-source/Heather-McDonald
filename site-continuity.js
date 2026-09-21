@@ -21,7 +21,7 @@
     .site-scoop-action.button,.site-scoop-action.ticket-button,.site-scoop-action.btn{border-radius:999px!important}
     .site-scoop-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:24px!important;height:24px!important;min-width:24px!important;min-height:24px!important;max-width:24px!important;max-height:24px!important;flex:0 0 24px!important;margin:0!important;padding:0!important;line-height:0!important;transform:none!important;opacity:1!important}
     .site-scoop-icon img{display:block!important;width:24px!important;height:24px!important;min-width:24px!important;max-width:24px!important;min-height:24px!important;max-height:24px!important;object-fit:contain!important;object-position:center!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;opacity:1!important;filter:none!important}
-    /* Homepage: the original circular symbols are links; redundant bottom text links are removed. */
+    /* Homepage: original circular symbols are links; redundant bottom text links are removed. */
     .choice a.symbol-link{display:grid!important;place-items:center!important;width:55px!important;height:55px!important;min-width:55px!important;min-height:55px!important;background:var(--ink,#251925)!important;color:white!important;border:0!important;border-radius:50%!important;margin:0!important;padding:0!important;font-size:25px!important;font-weight:400!important;line-height:1!important;text-decoration:none!important;align-self:start!important;flex:none!important}
     .choice a.symbol-link:hover{background:var(--berry,#a91a54)!important}
     .choice a.symbol-link:focus-visible{outline:3px solid #005fcc;outline-offset:4px}
@@ -68,7 +68,7 @@
   styles.textContent = css;
   document.head.appendChild(styles);
   function addScoopToActions() {
-    const selector = 'a.button,a.ticket-button,a.text-link,a.btn,.choice>a,.pick-card>a';
+    const selector = 'a.button,a.ticket-button,a.text-link,a.btn,.pick-card>a';
     document.querySelectorAll(selector).forEach(link => {
       if (link.querySelector('.site-scoop-icon')) return;
       const tail = [...link.childNodes].reverse().find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
