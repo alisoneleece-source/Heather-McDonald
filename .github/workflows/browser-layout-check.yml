@@ -1,0 +1,61 @@
+name: Check revised desktop and phone layouts
+on:
+  push:
+    paths:
+      - '.github/workflows/browser-layout-check.yml'
+permissions:
+  contents: read
+jobs:
+  browser-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser runner
+        run: |
+          npm install --prefix /tmp/heather-browser playwright@1.56.0 --no-save --no-audit --no-fund
+          if ! command -v google-chrome >/dev/null && ! command -v chromium >/dev/null; then
+            /tmp/heather-browser/node_modules/.bin/playwright install chromium
+          fi
+      - name: Check actual page layout and capture screenshots
+        run: |
+          cat > /tmp/heather-browser/check.cjs <<'JS'
+          const { chromium } = require('playwright');
+          const path = require('path'), fs=require('fs');
+          (async()=>{
+            const chrome = ['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].find(fs.existsSync);
+            const browser = await chromium.launch({headless:true,executablePath:chrome||undefined,args:['--no-sandbox','--allow-file-access-from-files','--disable-web-security']});
+            const root = process.cwd(); fs.mkdirSync('screenshots',{recursive:true});
+            const go=async(file,width,height)=>{
+              const p=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
+              await p.goto('file://'+path.join(root,file),{waitUntil:'load'});
+              await p.waitForTimeout(1100); return p;
+            };
+            const check=(value,reason)=>{if(!value)throw Error(reason);console.log('PASS '+reason)};
+            let p=await go('index.html?desktop=1',1440,900);
+            const ribbon=await p.locator('.sticker.site-greeting').evaluate(el=>{const r=el.getBoundingClientRect(),c=getComputedStyle(el);return {text:el.textContent.trim(),radius:c.borderRadius,color:c.backgroundColor,width:r.width,height:r.height}});
+            check(ribbon.text==='Hi, Juicy Scoopers!' && ribbon.radius==='0px' && ribbon.color==='rgb(223, 51, 122)','Desktop banner matches mobile ribbon treatment');
+            await p.screenshot({path:'screenshots/home-desktop.png'});await p.close();
+            p=await go('contact.html',1440,900);
+            const desktop=await p.evaluate(()=>({image:document.querySelector('.hero-photo').getBoundingClientRect().x,title:document.querySelector('.hero-copy').getBoundingClientRect().x,cols:getComputedStyle(document.querySelector('.contact-grid')).gridTemplateColumns}));
+            check(desktop.image<desktop.title && desktop.cols.trim().split(' ').length===2,'Desktop contact: photo left, heading right, two columns');
+            await p.screenshot({path:'screenshots/contact-desktop.png'});await p.close();
+            p=await go('contact.html',390,844);
+            const mobile=await p.evaluate(()=>({image:document.querySelector('.hero-photo').getBoundingClientRect().y,title:document.querySelector('.hero-copy').getBoundingClientRect().y,panel:document.querySelector('.panel').getBoundingClientRect(),management:document.querySelectorAll('.contact-area')[1].getBoundingClientRect(),email:document.querySelector('.contact-area .email').getBoundingClientRect(),scroll:document.documentElement.scrollWidth,view:innerWidth}));
+            check(mobile.title<mobile.image && mobile.management.y>=mobile.panel.y && mobile.management.bottom<=mobile.panel.bottom+2 && mobile.scroll<=mobile.view+3,'Mobile contact: heading above portrait, details in one card, no horizontal overflow');
+            await p.screenshot({path:'screenshots/contact-mobile.png',fullPage:true});await p.close();
+            p=await go('podcast.html',1440,900);
+            const podcast=await p.evaluate(()=>({photo:document.querySelector('.hero .art img')?.naturalWidth||0,photoSrc:document.querySelector('.hero .art img')?.getAttribute('src'),icon:document.querySelector('.hero .actions .site-scoop-icon img')?.naturalWidth||0,iconSrc:document.querySelector('.hero .actions .site-scoop-icon img')?.getAttribute('src'),buttonH:document.querySelector('.hero .actions a.button').getBoundingClientRect().height}));
+            check(podcast.photo>0 && podcast.photoSrc==='assets/podcast-portrait-supplied.svg','Podcast uses exact supplied portrait, not invented graphic');
+            check(podcast.icon>0 && podcast.iconSrc==='assets/scoop-exact-darkpink.svg' && podcast.buttonH<80,'Actual supplied scoop icon fits inside unchanged button');
+            await p.screenshot({path:'screenshots/podcast-desktop.png'});await p.close();
+            await browser.close();console.log('PASS ALL VISUAL LAYOUT CHECKS');
+          })().catch(err=>{console.error(err);process.exit(1)});
+          JS
+          node /tmp/heather-browser/check.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: revised-page-screenshots
+          path: screenshots/
+          if-no-files-found: ignore
+          retention-days: 1
