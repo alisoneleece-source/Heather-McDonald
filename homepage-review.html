@@ -9,10 +9,7 @@
 <body>
 <div class="status" role="status" id="loading">Loading the existing homepage and applying the requested desktop-only adjustments…</div>
 <script>
-/* Editable preview: all changes are deliberately confined to this file.
-   Publish beside index.html in the Heather-McDonald GitHub Pages repository.
-   The original index.html and shared site-continuity.js are never modified.
-*/
+/* Editable review: confined to this file. index.html is not modified. */
 (async function () {
   const status = document.getElementById('loading');
   try {
@@ -20,7 +17,6 @@
     if (!response.ok) throw Error('Homepage request returned '+response.status);
     const original = await response.text();
     const doc = new DOMParser().parseFromString(original, 'text/html');
-    // The three circular illustrations are now the navigation links.
     doc.querySelectorAll('.choice').forEach(card => {
       const destination = card.querySelector('a[href]');
       const symbol = card.querySelector('.symbol');
@@ -34,19 +30,21 @@
       link.innerHTML = symbol.innerHTML;
       symbol.replaceWith(link);
     });
-    // This informational callout is not needed on the desktop homepage.
     doc.querySelector('.closing')?.remove();
-    // Restore a visible promotional portrait to the live/tour feature.
-    // The former Heather About Page.png renders as an empty panel in the supplied screenshot.
     const tourPhoto = doc.querySelector('.shows-photo img');
     if (tourPhoto) {
       tourPhoto.src = 'https://web-all-img.s3.amazonaws.com/heathermcdonaldtour/original-df76e356.jpg';
       tourPhoto.alt = 'Heather McDonald promotional portrait';
       tourPhoto.style.objectPosition = 'center 24%';
     }
+    // Restore the previously approved greeting exactly, even if shared scripts do not run in a preview.
+    const greeting = doc.querySelector('.sticker');
+    if (greeting) {
+      greeting.textContent = 'Hi, Juicy Scoopers!';
+      greeting.classList.add('site-greeting');
+    }
     const style = doc.createElement('style');
     style.textContent = `
-      /* Keep the previously approved Scoop/button styling everywhere else. */
       .choice > a:not(.symbol-link) { border-bottom:0!important; text-decoration:none!important; padding-bottom:0!important; }
       .choice > .symbol-link .site-scoop-icon,
       .choice > a:not(.symbol-link) .site-scoop-icon,
@@ -58,10 +56,10 @@
       .choice > .symbol-link:hover { transform:translateY(-2px); background:var(--berry,#a91a54); }
       .choice > .symbol-link:focus-visible {outline:3px solid #005fcc;outline-offset:4px;}
       .shows-photo img { object-fit:cover!important; }
-      @media(max-width:700px) { /* Desktop preview is the requested scope; leave mobile.html unchanged. */ }
+      /* Match the already-approved pink angled greeting banner on the original homepage. */
+      .sticker.site-greeting{position:absolute!important;left:4%!important;right:auto!important;bottom:38px!important;width:max-content!important;max-width:93%!important;min-height:0!important;padding:10px 18px!important;border:0!important;border-radius:0!important;background:#df337a!important;color:#fff!important;box-shadow:0 9px 20px #25192524!important;transform:rotate(-5deg)!important;font:italic 700 clamp(19px,2.2vw,28px)/1.08 Georgia,serif!important;letter-spacing:-.025em!important;white-space:nowrap!important;z-index:3}
     `;
     doc.head.appendChild(style);
-    // Preserve the site's original responsive mobile handoff.
     const result = '<!doctype html>\n' + doc.documentElement.outerHTML;
     document.open(); document.write(result); document.close();
   } catch (error) {
