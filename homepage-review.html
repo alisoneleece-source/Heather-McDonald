@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Heather McDonald · Homepage review</title>
+<style>body{margin:0;background:#fff8f2;color:#251925;font:16px/1.5 Arial,sans-serif}.status{max-width:650px;margin:12vh auto;padding:24px}</style>
+</head>
+<body>
+<div class="status" role="status" id="loading">Loading the existing homepage and applying the requested desktop-only adjustments…</div>
+<script>
+/* Editable preview: all changes are deliberately confined to this file.
+   Publish beside index.html in the Heather-McDonald GitHub Pages repository.
+   The original index.html and shared site-continuity.js are never modified.
+*/
+(async function () {
+  const status = document.getElementById('loading');
+  try {
+    const response = await fetch('./index.html', {cache:'no-store'});
+    if (!response.ok) throw Error('Homepage request returned '+response.status);
+    const original = await response.text();
+    const doc = new DOMParser().parseFromString(original, 'text/html');
+    // The three circular illustrations are now the navigation links.
+    doc.querySelectorAll('.choice').forEach(card => {
+      const destination = card.querySelector('a[href]');
+      const symbol = card.querySelector('.symbol');
+      if (!destination || !symbol) return;
+      const link = doc.createElement('a');
+      link.className = 'symbol symbol-link';
+      link.href = destination.href;
+      link.setAttribute('aria-label', destination.textContent.replace(/[↗→↓↑]/gu,'').trim());
+      if (destination.hasAttribute('target')) link.setAttribute('target',destination.getAttribute('target'));
+      if (destination.hasAttribute('rel')) link.setAttribute('rel',destination.getAttribute('rel'));
+      link.innerHTML = symbol.innerHTML;
+      symbol.replaceWith(link);
+    });
+    // This informational callout is not needed on the desktop homepage.
+    doc.querySelector('.closing')?.remove();
+    // Restore a visible promotional portrait to the live/tour feature.
+    // The former Heather About Page.png renders as an empty panel in the supplied screenshot.
+    const tourPhoto = doc.querySelector('.shows-photo img');
+    if (tourPhoto) {
+      tourPhoto.src = 'https://web-all-img.s3.amazonaws.com/heathermcdonaldtour/original-df76e356.jpg';
+      tourPhoto.alt = 'Heather McDonald promotional portrait';
+      tourPhoto.style.objectPosition = 'center 24%';
+    }
+    const style = doc.createElement('style');
+    style.textContent = `
+      /* Keep the previously approved Scoop/button styling everywhere else. */
+      .choice > a:not(.symbol-link) { border-bottom:0!important; text-decoration:none!important; padding-bottom:0!important; }
+      .choice > a:not(.symbol-link) .site-scoop-icon,
+      .notes .text-link .site-scoop-icon { display:none!important; }
+      .choice > .symbol-link { display:grid; place-items:center; width:55px; height:55px;
+        background:var(--ink,#251925); color:white; border-radius:50%;
+        font-size:25px; border:0; margin-top:0!important; padding:0!important; text-decoration:none!important; flex:none;
+        transition:transform .15s,background .15s; }
+      .choice > .symbol-link:hover { transform:translateY(-2px); background:var(--berry,#a91a54); }
+      .choice > .symbol-link:focus-visible {outline:3px solid #005fcc;outline-offset:4px;}
+      .shows-photo img { object-fit:cover!important; }
+      @media(max-width:700px) { /* Desktop preview is the requested scope; leave mobile.html unchanged. */ }
+    `;
+    doc.head.appendChild(style);
+    // Preserve the site's original responsive mobile handoff.
+    const result = '<!doctype html>\n' + doc.documentElement.outerHTML;
+    document.open(); document.write(result); document.close();
+  } catch (error) {
+    status.textContent = 'This editable review must be opened from the Heather-McDonald GitHub Pages project alongside index.html. '+error.message;
+  }
+})();
+</script>
+</body>
+</html>
