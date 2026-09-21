@@ -21,6 +21,10 @@
     .site-scoop-action.button,.site-scoop-action.ticket-button,.site-scoop-action.btn{border-radius:999px!important}
     .site-scoop-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:24px!important;height:24px!important;min-width:24px!important;min-height:24px!important;max-width:24px!important;max-height:24px!important;flex:0 0 24px!important;margin:0!important;padding:0!important;line-height:0!important;transform:none!important;opacity:1!important}
     .site-scoop-icon img{display:block!important;width:24px!important;height:24px!important;min-width:24px!important;max-width:24px!important;min-height:24px!important;max-height:24px!important;object-fit:contain!important;object-position:center!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;opacity:1!important;filter:none!important}
+    /* Homepage: the original circular symbols are links; redundant bottom text links are removed. */
+    .choice a.symbol-link{display:grid!important;place-items:center!important;width:55px!important;height:55px!important;min-width:55px!important;min-height:55px!important;background:var(--ink,#251925)!important;color:white!important;border:0!important;border-radius:50%!important;margin:0!important;padding:0!important;font-size:25px!important;font-weight:400!important;line-height:1!important;text-decoration:none!important;align-self:start!important;flex:none!important}
+    .choice a.symbol-link:hover{background:var(--berry,#a91a54)!important}
+    .choice a.symbol-link:focus-visible{outline:3px solid #005fcc;outline-offset:4px}
     /* Contact: the supplied desktop reference is photo LEFT, heading RIGHT. */
     body.site-contact .hero{padding:54px 0 0!important}
     body.site-contact .hero-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;align-items:end!important;gap:clamp(14px,3vw,50px)!important}
@@ -78,6 +82,22 @@
   }
   function init() {
     const page = location.pathname.split('/').pop() || 'index.html';
+    if (page === 'index.html') {
+      document.querySelectorAll('.choice').forEach(card => {
+        const originalLink = card.querySelector('a[href]');
+        const symbol = card.querySelector('.symbol');
+        if (!originalLink || !symbol) return;
+        const iconLink = document.createElement('a');
+        iconLink.className = 'symbol-link';
+        iconLink.href = originalLink.href;
+        iconLink.setAttribute('aria-label', originalLink.textContent.replace(/[↗→↓↑]/gu, '').trim());
+        if (originalLink.hasAttribute('target')) iconLink.setAttribute('target', originalLink.getAttribute('target'));
+        if (originalLink.hasAttribute('rel')) iconLink.setAttribute('rel', originalLink.getAttribute('rel'));
+        iconLink.innerHTML = symbol.innerHTML;
+        symbol.replaceWith(iconLink);
+        originalLink.remove();
+      });
+    }
     addScoopToActions();
     if (page === 'index.html') {
       const sticker = document.querySelector('.sticker');
