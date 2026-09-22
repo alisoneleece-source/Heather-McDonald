@@ -11,6 +11,8 @@
     .site-loop .social-grid svg,.social .social-grid svg{display:block;width:45px;height:45px}
     .contact-grid .contact-area:first-child{text-align:center}
     .contact-grid .contact-area:first-child .logo-space{justify-content:center}
+    .contact-grid .contact-area:first-child .rep-name,.contact-grid .contact-area:first-child .phone{font-size:17px;line-height:1.5;text-align:center}
+    .contact-grid .contact-area{min-width:0}
     .contact-grid .contact-area .email{display:block;max-width:100%;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;letter-spacing:normal!important;font-size:clamp(13px,1.5vw,16px)!important;line-height:1.55}
     /* Preserve the existing mobile photo ribbon, and give desktop that SAME angled banner treatment. */
     .sticker.site-greeting{position:absolute!important;left:4%!important;right:auto!important;bottom:38px!important;width:max-content!important;max-width:93%!important;min-height:0!important;padding:10px 18px!important;border:0!important;border-radius:0!important;background:#df337a!important;color:#fff!important;box-shadow:0 9px 20px #25192524!important;transform:rotate(-5deg)!important;font:italic 700 clamp(19px,2.2vw,28px)/1.08 Georgia,serif!important;letter-spacing:-.025em!important;white-space:nowrap!important;z-index:3}
