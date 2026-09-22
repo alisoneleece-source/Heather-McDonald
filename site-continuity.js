@@ -118,6 +118,8 @@
     addScoopToActions();
     if (page === 'index.html') {
       replaceShopArrows();
+      const showsPhoto = document.querySelector('.shows-photo img');
+      if (showsPhoto) { showsPhoto.src = 'heather%20image.jpg'; showsPhoto.alt = 'Heather holding a microphone in a sparkling pink top'; }
       const patreonIcon = document.querySelector('.path .choice:nth-child(3) .symbol-link');
       if (patreonIcon) patreonIcon.innerHTML = '<svg viewBox="0 0 48 48" width="26" height="26" aria-hidden="true"><rect x="7" y="12" width="7" height="28" rx="1" fill="currentColor"/><circle cx="30" cy="22" r="13" fill="currentColor"/></svg>';
       const patreonHeading = document.querySelector('.path .choice:nth-child(3) h3');
