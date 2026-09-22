@@ -27,8 +27,11 @@
     .choice a.symbol-link:focus-visible{outline:3px solid #005fcc;outline-offset:4px}
     /* Only the three desktop Pick your scoop cards: less empty vertical space. */
     @media(min-width:701px){.path .choices .choice{min-height:305px!important;padding:22px 26px!important}.path .choices .choice p{flex:0 0 auto!important}}
-    /* Homepage: remove only the phone-preview link underline. */
+    /* Homepage: space the phone-preview scoop without restoring its underline. */
     .notes .text-link[href="preview.html"]{border-bottom:0!important;text-decoration:none!important}
+    .notes .text-link[href="preview.html"] .site-scoop-icon{margin-left:8px!important}
+    /* Shop: replace each category-arrow with the same 24px scoop and keep its label aligned. */
+    .shop-tile>span:last-child{display:inline-flex;align-items:center;gap:8px}
     /* Contact: the supplied desktop reference is photo LEFT, heading RIGHT. */
     body.site-contact .hero{padding:54px 0 0!important}
     body.site-contact .hero-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;align-items:end!important;gap:clamp(14px,3vw,50px)!important}
@@ -84,6 +87,16 @@
       icon.appendChild(img); link.appendChild(icon);
     });
   }
+  function replaceShopArrows() {
+    document.querySelectorAll('.shop-tile>span:last-child').forEach(label => {
+      if (label.querySelector('.site-scoop-icon')) return;
+      label.textContent = label.textContent.replace(/\s*[↗→↓↑]\s*$/u, '').trimEnd();
+      const icon = document.createElement('span');
+      icon.className = 'site-scoop-icon'; icon.setAttribute('aria-hidden', 'true');
+      const img = document.createElement('img'); img.src = 'assets/scoop-exact-darkpink.svg?v=20260921b'; img.alt = '';
+      icon.appendChild(img); label.appendChild(icon);
+    });
+  }
   function init() {
     const page = location.pathname.split('/').pop() || 'index.html';
     if (page === 'index.html') {
@@ -104,6 +117,7 @@
     }
     addScoopToActions();
     if (page === 'index.html') {
+      replaceShopArrows();
       const sticker = document.querySelector('.sticker');
       if (sticker) { sticker.textContent = 'Hi, Juicy Scoopers!'; sticker.classList.add('site-greeting'); }
       const closing = document.querySelector('main > section.closing');
@@ -113,7 +127,7 @@
     if (!['podcast.html', 'tour.html', 'shop.html', 'contact.html'].includes(page)) return;
     if (page === 'podcast.html') {
       document.body.classList.add('site-podcast');
-      const stripe = document.querySelector('.stripe'); if (stripe) stripe.remove();
+      const stripe = document.querySelector('.hero .art'); if (stripe) stripe.remove();
       const art = document.querySelector('.hero .art');
       if (art) {
         const photo = document.createElement('img');
