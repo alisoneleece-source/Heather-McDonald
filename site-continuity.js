@@ -25,8 +25,8 @@
     .choice a.symbol-link{display:grid!important;place-items:center!important;width:55px!important;height:55px!important;min-width:55px!important;min-height:55px!important;background:var(--ink,#251925)!important;color:white!important;border:0!important;border-radius:50%!important;margin:0!important;padding:0!important;font-size:25px!important;font-weight:400!important;line-height:1!important;text-decoration:none!important;align-self:start!important;flex:none!important}
     .choice a.symbol-link:hover{background:var(--berry,#a91a54)!important}
     .choice a.symbol-link:focus-visible{outline:3px solid #005fcc;outline-offset:4px}
-    /* Only the three desktop Pick your scoop cards: less empty vertical space. */
-    @media(min-width:701px){.path .choices .choice{min-height:280px!important;padding:18px 26px!important}.path .choices .choice p{flex:0 0 auto!important}}
+    /* Let content, rather than the old minimum height, determine the desktop card height. */
+    @media(min-width:701px){.path .choices .choice{min-height:0!important;height:auto!important;padding:18px 26px 20px!important}.path .choices .choice .eyebrow{margin-top:12px!important}.path .choices .choice h3{margin:8px 0 9px!important}.path .choices .choice:nth-child(3) h3{font-size:32px!important;line-height:1.05!important}.path .choices .choice p{flex:0 0 auto!important;margin-bottom:0!important}}
     /* Homepage: space the phone-preview scoop without restoring its underline. */
     .notes .text-link[href="preview.html"]{border-bottom:0!important;text-decoration:none!important}
     .notes .text-link[href="preview.html"] .site-scoop-icon{margin-left:8px!important}
@@ -64,8 +64,6 @@
       body.site-contact .hero-photo img{height:auto!important;max-width:330px!important;max-height:330px!important;width:100%!important;margin:auto!important;object-fit:contain!important}
       body.site-contact .content{padding:61px 0 78px!important}
       body.site-contact .contact-grid{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:44px!important}
-      body.site-contact .contact-area{text-align:center!important;width:100%!important}
-      body.site-contact .contact-area .logo-space{justify-content:center!important}
       body.site-contact .panel{padding:28px 19px 34px!important}
       body.site-contact .contact-area .email{white-space:normal!important;overflow-wrap:anywhere!important;font-size:clamp(11px,3vw,14px)!important}
     }
@@ -122,6 +120,8 @@
       if (patreonIcon) patreonIcon.innerHTML = '<svg viewBox="0 0 48 48" width="26" height="26" aria-hidden="true"><rect x="7" y="12" width="7" height="28" rx="1" fill="currentColor"/><circle cx="30" cy="22" r="13" fill="currentColor"/></svg>';
       const patreonHeading = document.querySelector('.path .choice:nth-child(3) h3');
       if (patreonHeading) patreonHeading.textContent = 'Explore Heather’s Patreon';
+      const patreonDescription = document.querySelector('.path .choice:nth-child(3) p');
+      if (patreonDescription) patreonDescription.textContent = 'Explore membership options and extra content on Heather’s Patreon.';
       const sticker = document.querySelector('.sticker');
       if (sticker) { sticker.textContent = 'Hi, Juicy Scoopers!'; sticker.classList.add('site-greeting'); }
       const closing = document.querySelector('main > section.closing');
