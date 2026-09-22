@@ -27,6 +27,8 @@
     .choice a.symbol-link:focus-visible{outline:3px solid #005fcc;outline-offset:4px}
     /* Only the three desktop Pick your scoop cards: less empty vertical space. */
     @media(min-width:701px){.path .choices .choice{min-height:305px!important;padding:22px 26px!important}.path .choices .choice p{flex:0 0 auto!important}}
+    /* Homepage: remove only the phone-preview link underline. */
+    .notes .text-link[href="preview.html"]{border-bottom:0!important;text-decoration:none!important}
     /* Contact: the supplied desktop reference is photo LEFT, heading RIGHT. */
     body.site-contact .hero{padding:54px 0 0!important}
     body.site-contact .hero-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;align-items:end!important;gap:clamp(14px,3vw,50px)!important}
@@ -102,9 +104,10 @@
     }
     addScoopToActions();
     if (page === 'index.html') {
-      document.querySelector('.closing')?.remove();
       const sticker = document.querySelector('.sticker');
       if (sticker) { sticker.textContent = 'Hi, Juicy Scoopers!'; sticker.classList.add('site-greeting'); }
+      const closing = document.querySelector('main > section.closing');
+      if (closing) closing.remove();
       return;
     }
     if (!['podcast.html', 'tour.html', 'shop.html', 'contact.html'].includes(page)) return;
