@@ -43,7 +43,7 @@
     body.site-contact .content{padding:65px 0 80px!important}
     body.site-contact .contact-grid{grid-template-columns:1fr 1fr!important;gap:36px!important}
     /* Podcast: use the actual supplied image instead of the invented graphic. */
-    body.site-podcast .hero .art{width:100%!important;max-width:530px!important;aspect-ratio:1!important;overflow:hidden!important;display:grid!important;place-items:center!important;background:#fff!important;border:11px solid white!important;border-radius:50%!important;transform:none!important;box-shadow:14px 16px 0 #df337a24!important}
+    body.site-podcast .hero .art{width:100%!max-width:530px!important;aspect-ratio:1!important;overflow:hidden!important;display:grid!important;place-items:center!important;background:#fff!important;border:11px solid white!important;border-radius:50%!important;transform:none!important;box-shadow:14px 16px 0 #df337a24!important}
     body.site-podcast .hero .art img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;max-width:none!important;border:0!important;transform:none!important}
     @media(max-width:850px){body.site-podcast .hero .art{display:grid!important;width:min(88%,370px)!important;margin:0 auto!important}}
     @media(max-width:700px){
@@ -64,6 +64,8 @@
       body.site-contact .hero-photo img{height:auto!important;max-width:330px!important;max-height:330px!important;width:100%!important;margin:auto!important;object-fit:contain!important}
       body.site-contact .content{padding:61px 0 78px!important}
       body.site-contact .contact-grid{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:44px!important}
+      body.site-contact .contact-area{text-align:center!important;width:100%!important}
+      body.site-contact .contact-area .logo-space{justify-content:center!important}
       body.site-contact .panel{padding:28px 19px 34px!important}
       body.site-contact .contact-area .email{white-space:normal!important;overflow-wrap:anywhere!important;font-size:clamp(11px,3vw,14px)!important}
     }
