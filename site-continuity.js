@@ -38,7 +38,7 @@
     body.site-contact .hero-copy{text-align:left!important;align-self:center!important;padding:0 0 30px!important}
     body.site-contact .hero-copy>p{display:none!important}
     body.site-contact .hero-photo{justify-content:center!important;align-items:end!important}
-    body.site-contact .hero-photo img{display:block!important;width:100%!important;max-width:410px!important;max-height:430px!important;height:auto!important;object-fit:contain!important;object-position:bottom center!important}
+    body.site-contact .hero-photo img{display:block!important;width:100%!important;max-width:410px!important;max-height:430px!important;height:auto!important;object-fit:contain!important;object-position:center!important}
     body.site-contact .contact-area:first-child>p:not(.rep-name){display:none!important}
     body.site-contact .content{padding:65px 0 80px!important}
     body.site-contact .contact-grid{grid-template-columns:1fr 1fr!important;gap:36px!important}
@@ -127,7 +127,7 @@
     if (!['podcast.html', 'tour.html', 'shop.html', 'contact.html'].includes(page)) return;
     if (page === 'podcast.html') {
       document.body.classList.add('site-podcast');
-      const stripe = document.querySelector('.hero .art'); if (stripe) stripe.remove();
+      const stripe = document.querySelector('.stripe'); if (stripe) stripe.remove();
       const art = document.querySelector('.hero .art');
       if (art) {
         const photo = document.createElement('img');
