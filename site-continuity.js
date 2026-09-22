@@ -26,7 +26,7 @@
     .choice a.symbol-link:hover{background:var(--berry,#a91a54)!important}
     .choice a.symbol-link:focus-visible{outline:3px solid #005fcc;outline-offset:4px}
     /* Only the three desktop Pick your scoop cards: less empty vertical space. */
-    @media(min-width:701px){.path .choices .choice{min-height:305px!important;padding:22px 26px!important}.path .choices .choice p{flex:0 0 auto!important}}
+    @media(min-width:701px){.path .choices .choice{min-height:280px!important;padding:18px 26px!important}.path .choices .choice p{flex:0 0 auto!important}}
     /* Homepage: space the phone-preview scoop without restoring its underline. */
     .notes .text-link[href="preview.html"]{border-bottom:0!important;text-decoration:none!important}
     .notes .text-link[href="preview.html"] .site-scoop-icon{margin-left:8px!important}
@@ -118,6 +118,8 @@
     addScoopToActions();
     if (page === 'index.html') {
       replaceShopArrows();
+      const patreonHeading = document.querySelector('.path .choice:nth-child(3) h3');
+      if (patreonHeading) patreonHeading.textContent = 'Explore Heather’s Patreon';
       const sticker = document.querySelector('.sticker');
       if (sticker) { sticker.textContent = 'Hi, Juicy Scoopers!'; sticker.classList.add('site-greeting'); }
       const closing = document.querySelector('main > section.closing');
