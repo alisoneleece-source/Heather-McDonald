@@ -64,9 +64,7 @@ function unifyHeader(){
 function podcast(){if(!location.pathname.endsWith('/podcast.html'))return;
  const art=document.querySelector('.hero .art');if(art){art.classList.add('site-podcast-cover-frame');art.replaceChildren();const img=document.createElement('img');img.src='image%20for%20podcast.png';img.alt='Heather McDonald podcast header artwork';art.appendChild(img);art.setAttribute('aria-label',img.alt);}
  const panels=document.querySelectorAll('.episode-panel');const images=[['Juicy-Scoop-with-Hather-McDonald.jpg','Juicy Scoop podcast artwork'],['Juicy%20crimes%20image%20for%20podcast.jpeg','Juicy Crimes podcast artwork']];
- panels.forEach((panel,i)=>{if(!images[i])return;const image=document.createElement('img');image.className='podcast-cover';image.src=images[i][0];image.alt=images[i][1];const heading=panel.querySelector('h3');if(heading)heading.insertAdjacentElement('afterend',image);
-  const button=panel.querySelector('a.button');if(button){for(const node of Array.from(button.childNodes)){if(node.nodeType===Node.TEXT_NODE)node.textContent=node.textContent.replace(/^\s*See\s+/i,'');}if(!button.querySelector('.site-scoop-icon'))button.appendChild(icon());button.classList.add('site-scoop-action');}
- });
+ panels.forEach((panel,i)=>{if(!images[i])return;const image=document.createElement('img');image.className='podcast-cover';image.src=images[i][0];image.alt=images[i][1];const heading=panel.querySelector('h3');if(heading)heading.insertAdjacentElement('afterend',image);});
 }
 function removeLoop(){document.querySelectorAll('main > .site-loop,main > .social,main .site-loop,main .social').forEach(section=>{if(section.querySelector('.social-grid')||section.classList.contains('site-loop'))section.remove();});}
 function replaceArrows(){
