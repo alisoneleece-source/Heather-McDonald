@@ -26,11 +26,11 @@ header.site-standard .scoop-menu summary::-webkit-details-marker{display:none}
 header.site-standard .scoop-menu .scoop-options{position:absolute;z-index:35;top:calc(100% + 17px);left:-16px;min-width:174px;padding:7px;background:#251925;border:1px solid #ffffff40;border-radius:5px;box-shadow:0 14px 22px #120a1290}
 header.site-standard .scoop-options a{display:block!important;padding:11px 10px;white-space:nowrap}
 header.site-standard .scoop-options a:hover{background:#ffffff16}
-.site-polished-action{display:inline-flex;align-items:center;gap:7px}
-.site-polished-action .site-scoop-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:24px!important;height:24px!important;min-width:24px!important;min-height:24px!important;margin:0!important;padding:0!important;flex:0 0 24px!important}
-.site-polished-action .site-scoop-icon img{display:block!important;width:24px!important;height:24px!important;object-fit:contain!important;border:0!important;box-shadow:none!important;filter:none!important}
-header.site-standard .site-polished-action .site-scoop-icon,footer .site-polished-action .site-scoop-icon{width:17px!important;height:17px!important;min-width:17px!important;min-height:17px!important;flex-basis:17px!important}
-header.site-standard .site-polished-action .site-scoop-icon img,footer .site-polished-action .site-scoop-icon img{width:17px!important;height:17px!important}
+/* Arrow replacements are inline artwork, not a new button layout. */
+.site-scoop-icon{display:inline-block!important;width:1em!important;height:1em!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;flex:none!important;margin:0!important;padding:0!important;line-height:0!important;vertical-align:-.13em!important;transform:none!important}
+.site-scoop-icon img{display:block!important;width:100%!important;height:100%!important;min-width:0!important;min-height:0!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;border:0!important;box-shadow:none!important;filter:none!important;transform:none!important}
+header.site-standard .scoop-options a .site-scoop-icon,header.site-standard .site-standard-links a .site-scoop-icon{width:11px!important;height:11px!important;vertical-align:-1px!important}
+header.site-standard .scoop-options a .site-scoop-icon img,header.site-standard .site-standard-links a .site-scoop-icon img{width:11px!important;height:11px!important}
 /* Podcast hero: Contact-sized banner, image LEFT and words RIGHT. */
 body.site-podcast main .hero{padding:54px 0 0!important;overflow:visible!important}
 body.site-podcast main .hero .hero-grid{display:grid!important;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;gap:clamp(14px,3vw,50px)!important;align-items:end!important}
@@ -38,21 +38,17 @@ body.site-podcast main .hero .hero-grid>div:first-child{grid-column:2!important;
 body.site-podcast main .hero .art.site-podcast-cover-frame{grid-column:1!important;grid-row:1!important;display:flex!important;align-items:flex-end!important;justify-content:center!important;width:100%!important;max-width:410px!important;height:430px!important;max-height:430px!important;aspect-ratio:auto!important;border:0!important;border-radius:0!important;background:transparent!important;overflow:visible!important;transform:none!important;box-shadow:none!important;margin:0 auto!important}
 body.site-podcast main .hero .art.site-podcast-cover-frame img{display:block!important;width:100%!important;height:100%!important;max-width:410px!important;max-height:430px!important;object-fit:contain!important;object-position:bottom center!important;border:0!important;border-radius:0!important;transform:none!important}
 body.site-podcast main .hero h1{font-size:clamp(60px,6vw,88px)!important;line-height:.94!important;margin:12px 0 20px!important}
-/* One common image height. Top-aligned crops keep Heather's entire head visible in both supplied covers. */
+/* One common image height. Top-aligned crops keep Heather's head visible in both supplied covers. */
 body.site-podcast main .episode-panel img.podcast-cover{display:block!important;width:100%!important;height:235px!important;min-height:235px!important;max-width:100%!important;object-fit:cover!important;object-position:center top!important;border-radius:8px!important;background:#fff!important;margin:0 0 15px!important}
-/* Preserve the scoop inside each rectangular button and prevent button text from stretching. */
-body.site-podcast main a.button{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;flex:0 0 auto!important;align-self:flex-start!important;width:auto!important;max-width:100%!important;height:auto!important;min-height:49px!important;padding:13px 18px!important;border-radius:5px!important;line-height:1.3!important;white-space:normal!important;text-align:center!important}
-body.site-podcast main a.button .site-scoop-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:17px!important;height:17px!important;min-width:17px!important;max-width:17px!important;min-height:17px!important;max-height:17px!important;flex:0 0 17px!important;margin:0!important}
-body.site-podcast main a.button .site-scoop-icon img{display:block!important;width:17px!important;height:17px!important;min-width:17px!important;max-width:17px!important;min-height:17px!important;max-height:17px!important;object-fit:contain!important}
-/* Tour ticket label remains one row; its date/time typography is untouched. */
-.performances a{justify-content:space-between!important;gap:15px!important}
-.performances a .ticket{display:inline-flex!important;align-items:center!important;justify-content:flex-end!important;gap:5px!important;white-space:nowrap!important;flex:0 0 auto!important;margin-left:auto!important}
-.performances a .ticket .site-scoop-icon{display:inline-flex!important;width:19px!important;height:19px!important;min-width:19px!important;min-height:19px!important;flex:0 0 19px!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:0!important;vertical-align:middle!important}
-.performances a .ticket .site-scoop-icon img{display:block!important;width:19px!important;height:19px!important;object-fit:contain!important}
-.performances a > .site-scoop-icon{display:none!important}
+/* Preserve existing podcast button shape and typography. */
+body.site-podcast main a.button .site-scoop-icon{width:12px!important;height:12px!important;vertical-align:-1px!important}
+body.site-podcast main a.button .site-scoop-icon img{width:12px!important;height:12px!important}
+/* Tour: keep the original ticket row and text in place. */
+.performances a .ticket .site-scoop-icon{width:14px!important;height:14px!important;vertical-align:-2px!important;margin-left:3px!important}
+.performances a .ticket .site-scoop-icon img{width:14px!important;height:14px!important}
 @media(max-width:1100px) and (min-width:701px){header.site-standard .site-standard-menu{display:block}header.site-standard .site-standard-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#251925;padding:12px 25px 26px;box-shadow:0 17px 26px #25192522}header.site-standard .site-standard-links.open{display:flex}header.site-standard .site-standard-links a{padding:13px 5px}header.site-standard .site-standard-links .join{text-align:center;margin-top:10px}header.site-standard .scoop-menu summary{padding:13px 5px}header.site-standard .scoop-menu .scoop-options{position:static;min-width:0;margin:0 0 4px 12px;border:0;border-left:2px solid #ff91bf;border-radius:0;box-shadow:none;padding:0 0 0 12px}}
 @media(max-width:850px){body.site-podcast main .hero .hero-grid{grid-template-columns:1fr!important;gap:20px!important}body.site-podcast main .hero .hero-grid>div:first-child{grid-column:1!important;grid-row:1!important;text-align:center!important;padding-bottom:0!important}body.site-podcast main .hero .art.site-podcast-cover-frame{grid-column:1!important;grid-row:2!important;max-width:330px!important;height:330px!important;max-height:330px!important}body.site-podcast main .hero .art.site-podcast-cover-frame img{max-width:330px!important;max-height:330px!important}body.site-podcast main .hero{padding:45px 0 40px!important}}
-@media(max-width:700px){header.site-standard>.site-standard-social,header.site-standard>.site-standard-nav{display:none!important}body.site-podcast main .episode-panel img.podcast-cover{height:210px!important;min-height:210px!important}body.site-podcast main .hero h1{font-size:clamp(57px,13vw,75px)!important}body.site-podcast main .actions{justify-content:center!important}body.site-podcast main .actions a.button{width:auto!important;max-width:100%!important}}
+@media(max-width:700px){header.site-standard>.site-standard-social,header.site-standard>.site-standard-nav{display:none!important}body.site-podcast main .episode-panel img.podcast-cover{height:210px!important;min-height:210px!important}body.site-podcast main .hero h1{font-size:clamp(57px,13vw,75px)!important}body.site-podcast main .actions{justify-content:center!important}}
 `;
 const style=document.createElement('style');style.textContent=css;document.head.appendChild(style);
 function icon(){const span=document.createElement('span');span.className='site-scoop-icon';span.setAttribute('aria-hidden','true');const img=document.createElement('img');img.src=scoop;img.alt='';span.appendChild(img);return span;}
@@ -74,12 +70,12 @@ function podcast(){if(!location.pathname.endsWith('/podcast.html'))return;
 }
 function removeLoop(){document.querySelectorAll('main > .site-loop,main > .social,main .site-loop,main .social').forEach(section=>{if(section.querySelector('.social-grid')||section.classList.contains('site-loop'))section.remove();});}
 function replaceArrows(){
- document.querySelectorAll('.performances a').forEach(link=>{const ticket=link.querySelector('.ticket');if(!ticket)return;link.querySelectorAll(':scope > .site-scoop-icon').forEach(extra=>extra.remove());ticket.replaceChildren(document.createTextNode('Tickets'),icon());ticket.classList.add('site-ticket-inline');link.classList.remove('site-polished-action');});
- document.querySelectorAll('a,button').forEach(el=>{if(el.matches('.performances a'))return;if(el.closest('.unified-mobile-shell')&&el.classList.contains('unified-mobile-toggle'))return;
-  let replaced=false;const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
-  for(const node of nodes){if(node.parentElement&&node.parentElement.closest('.site-scoop-icon'))continue;const value=node.textContent;if(/[↗→↓↑]/u.test(value)){node.textContent=value.replace(/\s*[↗→↓↑]\s*/gu,' ').replace(/\s+$/u,' ');replaced=true;}}
-  if(!replaced||el.querySelector('.site-scoop-icon'))return;const last=el.querySelector('.shop-link span:last-child');if(last&&last.textContent.trim()===''){last.appendChild(icon());}else{el.appendChild(icon());}el.classList.add('site-polished-action');
- });document.querySelectorAll('.shop-link span:last-child').forEach(span=>{if(span.textContent.trim().match(/^[↗→↓↑]$/u)){span.textContent='';span.appendChild(icon());}});
+ document.querySelectorAll('a,button').forEach(el=>{
+  if(el.closest('a,button')!==el)return;
+  const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const nodes=[];
+  while(walker.nextNode())if(/[↗→↓↑]/u.test(walker.currentNode.textContent)&&!walker.currentNode.parentElement.closest('.site-scoop-icon'))nodes.push(walker.currentNode);
+  for(const node of nodes){const parts=node.textContent.split(/([↗→↓↑])/u);const fragment=document.createDocumentFragment();parts.forEach(part=>{if(/^[↗→↓↑]$/u.test(part))fragment.appendChild(icon());else if(part)fragment.appendChild(document.createTextNode(part));});node.replaceWith(fragment);}
+ });
 }
 function init(){removeLoop();unifyHeader();podcast();replaceArrows();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
