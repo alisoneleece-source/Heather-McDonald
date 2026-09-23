@@ -1,0 +1,7 @@
+/* Option 1 desktop header recovery: structural styles only. This file is not yet linked from the live site. */
+@media (min-width: 701px) {
+  html { scroll-padding-top: 145px; }
+  body > .notice, body > .site-notice, body > .announcement { position: relative; }
+  header.header, header.top, header.site-standard { position: sticky !important; top: 0 !important; z-index: 1000 !important; background: #251925 !important; }
+  header.site-standard .site-standard-social a.youtube { border: 1px solid #ffffff55 !important; }
+}
