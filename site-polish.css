@@ -149,3 +149,26 @@ header.site-standard .scoop-options .site-scoop-icon,.unified-mobile-panel detai
 .page-mobile .shop-section>.btn{display:flex!important;width:max-content;max-width:100%;margin:0 auto;font-size:10px;min-height:40px;padding:10px 15px}
 .page-mobile .dock a{gap:8px}
 .page-mobile .dock svg{width:18px;height:18px;flex:none}
+
+/* Shorter calls to action and the final editorial spacing pass. */
+.page-shop .shop-link .action-label,.page-shop .shop-link .action-label>span{font:600 13px/1.5 Arial,sans-serif!important;color:var(--ink)!important;flex-shrink:1!important}
+.page-shop .shop-link .site-scoop-icon{font-size:11px!important}
+.page-shop .shop-link{gap:9px!important;padding:12px 0}
+.page-shop .category-body{padding:25px 23px}
+.page-shop .category-desc{line-height:1.6}
+.contact-divider{display:none}
+@media(min-width:701px){
+ body.site-podcast main .hero .hero-grid>div:first-child>.eyebrow{position:relative;top:-12px}
+ body.site-podcast main .hero .art.site-podcast-cover-frame img{transform:scale(1.065)!important;transform-origin:center bottom}
+ body.site-contact .contact-grid{display:flex!important;flex-direction:column!important;align-items:center!important;gap:0!important;max-width:720px;margin:auto;padding:38px 44px!important}
+ body.site-contact .contact-area{width:100%;text-align:center!important}
+ body.site-contact .contact-area:first-child .logo-space{justify-content:center!important;margin:18px 0 12px}
+ body.site-contact .contact-area:first-child .rep-name,body.site-contact .contact-area:first-child .phone{text-align:center!important}
+ body.site-contact .contact-area:nth-of-type(3){border:0!important;padding:0!important}
+ body.site-contact .contact-area .email{margin-top:15px}
+ body.site-contact .contact-divider{display:block;width:85%;height:32px;margin:16px auto 27px;background:url('assets/contact-divider.svg') center/contain no-repeat}
+}
+.page-shop .product-group-gallery{display:flex;align-items:center;justify-content:center;padding:14px 9px;background:#f8e5ec!important}
+.page-shop .product-group{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 7px 7px #25192512)}
+.page-shop .shop-link .action-label{flex:1 1 auto!important}
+.page-shop .shop-link.scoop-link{display:flex!important;align-items:baseline!important}
