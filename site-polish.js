@@ -3,14 +3,12 @@
 'use strict';
 const scoop='assets/scoop-exact-darkpink.svg?v=20260922';
 const css=`
-header.site-standard{background:#251925!important;color:#fff!important;border-bottom:1px solid #ffffff23!important;position:relative!important;z-index:30!important;overflow:visible!important}
+header.site-standard{background:#251925!important;color:#fff!important;border-bottom:1px solid #ffffff23!important;position:sticky!important;top:0!important;z-index:30!important;overflow:visible!important}
 header.site-standard .site-standard-social{display:flex;justify-content:flex-end;gap:9px;padding-top:9px}
 header.site-standard .site-standard-social a{width:31px;height:31px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #ffffff55;border-radius:50%;color:#fff;text-decoration:none}
 header.site-standard .site-standard-social a:hover{background:#df337a}
 header.site-standard .site-standard-social svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 header.site-standard .site-standard-social a.youtube svg{fill:currentColor;stroke:none}
-/* The YouTube logo is unframed, while keyboard focus remains visible. */
-header.site-standard .site-standard-social a.youtube,header.unified-mobile-header .unified-mobile-social a.youtube{border:0!important}
 header.site-standard .site-standard-nav{display:flex!important;justify-content:space-between;align-items:center;gap:24px;min-height:84px;padding:0!important;flex-wrap:nowrap!important}
 header.site-standard .site-standard-brand{color:white!important;text-decoration:none!important;line-height:1.1!important;white-space:nowrap}
 header.site-standard .site-standard-brand b{display:block;color:#fff;font:900 23px/1.1 Arial,sans-serif;letter-spacing:-1.6px}
